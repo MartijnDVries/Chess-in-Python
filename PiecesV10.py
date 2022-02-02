@@ -3407,6 +3407,7 @@ class Piece(pygame.sprite.Sprite):
             black_king_check = False
 
     def place_back_black(self, new_square, old_square):
+        """place pieces back to original square if needed"""
         global turn
         del square_list[new_square][2:]
         square_list[self.old_square].append("OCCUPIED")
@@ -3428,6 +3429,7 @@ class Piece(pygame.sprite.Sprite):
         turn = 3
 
     def check_checkmate_black(self):
+        """check if black king is checkmated"""
         global black_king_check
         self.checkmate_check = True
         legal_moves_list = list()
@@ -7196,6 +7198,7 @@ class Piece(pygame.sprite.Sprite):
         global last_row
         global last_piece
         global before_row
+        global capture
         cwd = os.getcwd()
         stockfish = Stockfish(cwd+"\stockfish\stockfish_14.1_win_x64_popcnt\stockfish_14.1_win_x64_popcnt.exe")
         stockfish.set_fen_position(fen_str)
@@ -7213,8 +7216,12 @@ class Piece(pygame.sprite.Sprite):
                 for piece in black_pieces_list:
                     if piece.square == dest_square_sf:
                         black_pieces_list.remove(piece)
+                        capture = "capture "
+                    else:
+                        capture = "no capture "
                 for piece in white_pieces_list:
                     if piece.square == source_square_sf:
+                        piece.fifty_move_rule(capture, str(piece.piece_name))
                         piece.square = dest_square_sf
                         piece.row = dest_square_sf[1]
                         piece.file = dest_square_sf[0]
@@ -7299,8 +7306,12 @@ class Piece(pygame.sprite.Sprite):
                 for piece in white_pieces_list:
                     if piece.square == dest_square_sf:
                         white_pieces_list.remove(piece)
+                        capture = "capture "
+                    else:
+                        capture = "no capture "
                 for piece in black_pieces_list:
                     if piece.square == source_square_sf:
+                        piece.fifty_move_rule(capture, str(piece.piece_name))
                         piece.square = dest_square_sf
                         piece.row = dest_square_sf[1]
                         piece.file = dest_square_sf[0]
