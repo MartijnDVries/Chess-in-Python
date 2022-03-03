@@ -143,7 +143,7 @@ class Entry:
                     and event.key != pygame.K_8 \
                     and event.key != pygame.K_9 \
                     and event.key != pygame.K_0:
-                    messagebox.showwarning("Error", "Please enter a number")
+                    messagebox.showwarning("Error", "Please enter a number between 0 and 60")
                     self.text = self.text[:-1]
                 else:
                     self.text += event.unicode

@@ -26,7 +26,7 @@ def main():
     btn_6 = Button(759, 100, 94, 47, btn_color=(222, 80, 80), click_btn_color=(233, 82, 162), text="3|2", font_size=24)
 
     # create a button list for easy drawing
-    button_list = []
+    button_list = list()
     button_list.append(btn_1)
     button_list.append(btn_2)
     button_list.append(btn_3)
@@ -56,7 +56,7 @@ def main():
     sec_text = Text("Sec.", 677, 180, font_size=16)
     incr_text = Text("Increment (sec.)", 777, 180, font_size=16)
 
-    text_list = []
+    text_list = list()
     text_list.append(text_mode)
     text_list.append(Player_text)
     text_list.append(vs_text)
@@ -88,7 +88,7 @@ def main():
     down_button3 = Image(677, 230, 33, 30, image_file="/down_arrow.png")
     down_button4 = Image(777, 230, 33, 30, image_file="/down_arrow.png")
 
-    image_list = []
+    image_list = list()
     image_list.append(up_button)
     image_list.append(down_button)
     image_list.append(up_button2)
@@ -113,6 +113,7 @@ def main():
     entry_list.append(min_entry)
     entry_list.append(sec_entry)
     entry_list.append(incr_entry)
+    # If Player vs player, color pick is not relevant so it turns False. Default is True
     global color_pick
     color_pick = True
     global run

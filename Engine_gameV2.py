@@ -379,8 +379,8 @@ class APP:
                                 pygame.quit()
                                 with open("main_menu2.py") as f:
                                     code = f.read()
-                                    exec(code)
-                                os._exit(0)
+                                    exec(code, {})
+                                sys.exit()
                             else:
                                 pass
 
@@ -400,8 +400,8 @@ class APP:
                         pygame.quit()
                         with open("main_menu2.py") as f:
                             code = f.read()
-                            exec(code)
-                        os._exit(0)
+                            exec(code, {})
+                        sys.exit()
                     if pause_btn.rect.collidepoint(pos) \
                             and not quit_pop_up \
                             and not draw_pop_up \
